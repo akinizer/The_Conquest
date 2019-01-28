@@ -1,0 +1,183 @@
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
+public class GUITheConquest implements ActionListener{
+	Soldier[] s1 = new Soldier[3];
+	Soldier[] s2 = new Soldier[3];
+    army a1,a2;    
+    player p1,p2;
+    JLabel title,buy1,m1,m2,n1,n2,pg1,pg2,attack1,buy2,m3,m4,n3,n4,pg3,pg4,attack2;
+    JTextField text1,text2,text3,text4,text5,text6,text7,text8,text9,text10,text11,text12,texts[];
+    JButton ok1 = new JButton("ok");
+    land l1,l2;
+    String st;
+    Picture pic = new Picture();
+    private int a=0,b=0,c=0,d=0,e=0,f=0,g=0,h=0,b1,b2,b3,b4,b5,b6;    
+    public GUITheConquest() {
+    	
+    	a1 = new army(c,d,e);
+    	a2 = new army(f,g,h);
+    	
+    	p1 = new player("ali",a,a1);
+    	p2 = new player("veli",b,a2);
+    	
+    	l1 = new land();
+    	l2 = new land();
+    	
+    	p1.increaseGold(700);
+    	p2.increaseGold(1000);
+		
+		a = p1.getGold()-a1.buySoldier(b1,b2,b3);
+    	b = p2.getGold()-a2.buySoldier(b4,b5,b6);
+    	
+    	c = a1.getMyrmidon();
+    	d = a1.getNaga();
+    	e = a1.getPegasusRider();
+    	
+    	f = a2.getMyrmidon();
+    	g = a2.getNaga();
+    	h = a2.getPegasusRider();
+    	
+    	p1 = new player("alicik",a,a1);
+    	p2 = new player("veli",b,a2);
+		a1 = new army(c,d,e);
+    	a2 = new army(f,g,h);
+		
+    	
+    	System.out.println(a1+"\n"+a2);
+		title = new JLabel("                                        ****The Conquest****");
+		title.setForeground(Color.BLUE);
+    	title.setFont(new java.awt.Font("Comic Sans MS",Font.BOLD,30));
+    	title.setBackground(new Color(10,100,50));
+    	
+    	a1.setBackground(Color.orange);
+    	a2.setBackground(Color.orange);
+    	
+    	l1.setBackground(Color.pink);
+    	l2.setBackground(Color.yellow);
+    	
+    	buy1 = new JLabel("<html>Buy Soldier<br><html>");
+    	buy1.setFont(new java.awt.Font("Comic Sans MS",Font.BOLD,22));
+    	buy1.setForeground(Color.BLUE);
+    	buy1.setBackground(Color.YELLOW);
+    	m1 = new JLabel("Myrmidons: ");
+    	m1.setFont(new java.awt.Font("Comic Sans MS",Font.BOLD,20));
+    	m1.setForeground(Color.BLUE);
+    	n1 = new JLabel("Nagas: ");
+    	n1.setFont(new java.awt.Font("Comic Sans MS",Font.BOLD,20));
+    	n1.setForeground(Color.BLUE);
+    	pg1 = new JLabel("Pegasus Riders: ");
+    	pg1.setFont(new java.awt.Font("Comic Sans MS",Font.BOLD,20));
+    	pg1.setForeground(Color.BLUE);
+    	m2 = new JLabel("Myrmidons: ");
+    	m2.setFont(new java.awt.Font("Comic Sans MS",Font.BOLD,20));
+    	m2.setForeground(Color.BLUE);
+    	n2 = new JLabel("Nagas: ");
+    	n2.setFont(new java.awt.Font("Comic Sans MS",Font.BOLD,20));
+    	n2.setForeground(Color.BLUE);
+    	pg2 = new JLabel("Pegasus Riders: ");
+    	pg2.setFont(new java.awt.Font("Comic Sans MS",Font.BOLD,20));
+    	pg2.setForeground(Color.BLUE);
+    	attack1 = new JLabel("Attack/Transfer");
+    	attack1.setFont(new java.awt.Font("Comic Sans MS",Font.BOLD,22));
+    	attack1.setForeground(Color.BLUE);
+    	
+		buy2 = new JLabel("<html>Buy Soldier<br><html>");
+    	buy2.setFont(new java.awt.Font("Comic Sans MS",Font.BOLD,22));
+    	buy2.setForeground(Color.BLUE);
+    	buy2.setBackground(Color.YELLOW);
+    	m3 = new JLabel("Myrmidons: ");
+    	m3.setFont(new java.awt.Font("Comic Sans MS",Font.BOLD,20));
+    	m3.setForeground(Color.BLUE);
+    	n3 = new JLabel("Nagas: ");
+    	n3.setFont(new java.awt.Font("Comic Sans MS",Font.BOLD,20));
+    	n3.setForeground(Color.BLUE);
+    	pg3 = new JLabel("Pegasus Riders: ");
+    	pg3.setFont(new java.awt.Font("Comic Sans MS",Font.BOLD,20));
+    	pg3.setForeground(Color.BLUE);
+    	m4 = new JLabel("Myrmidons: ");
+    	m4.setFont(new java.awt.Font("Comic Sans MS",Font.BOLD,20));
+    	m4.setForeground(Color.BLUE);
+    	n4 = new JLabel("Nagas: ");
+    	n4.setFont(new java.awt.Font("Comic Sans MS",Font.BOLD,20));
+    	n4.setForeground(Color.BLUE);
+    	pg4 = new JLabel("Pegasus Riders: ");
+    	pg4.setFont(new java.awt.Font("Comic Sans MS",Font.BOLD,20));
+    	pg4.setForeground(Color.BLUE);
+    	attack2 = new JLabel("Attack/Transfer");
+    	attack2.setFont(new java.awt.Font("Comic Sans MS",Font.BOLD,22));
+    	attack2.setForeground(Color.BLUE);
+    	
+    	text1 = new JTextField();
+		text1.setPreferredSize(new Dimension(30,20));
+		text2 = new JTextField();
+		text2.setPreferredSize(new Dimension(30,20));
+		text3 = new JTextField();
+		text3.setPreferredSize(new Dimension(30,20));
+		text4 = new JTextField();
+		text4.setPreferredSize(new Dimension(30,20));
+		text5 = new JTextField();
+		text5.setPreferredSize(new Dimension(30,20));
+		text6 = new JTextField();
+		text6.setPreferredSize(new Dimension(30,20));
+		text7 = new JTextField();
+		text7.setPreferredSize(new Dimension(30,20));
+		text8 = new JTextField();
+		text8.setPreferredSize(new Dimension(30,20));
+		text9 = new JTextField();
+		text9.setPreferredSize(new Dimension(30,20));
+		text10 = new JTextField();
+		text10.setPreferredSize(new Dimension(30,20));
+		text11 = new JTextField();
+		text11.setPreferredSize(new Dimension(30,20));
+		text12 = new JTextField();
+		text12.setPreferredSize(new Dimension(30,20));
+		texts = new JTextField[12];
+		texts[0]=text1;texts[1]=text2;texts[2]=text3;texts[3]=text4;texts[4]=text5;texts[5]=text6;
+		texts[6]=text7;texts[7]=text8;texts[8]=text9;texts[9]=text10;texts[10]=text11;texts[11]=text12;
+		for(int i = 0 ; i < 12 ; i++)
+			texts[i].addActionListener(this);
+		ok1.addActionListener(this);
+			
+		
+    	
+    	p1.add(a1); p1.add(l1); p1.add(buy1); p1.add(m1); p1.add(text1); p1.add(n1); p1.add(text2); p1.add(pg1); p1.add(text3);
+    	p1.add(ok1);p1.add(attack1); p1.add(m2); p1.add(text4); p1.add(n2); p1.add(text5); p1.add(pg2); p1.add(text6);
+    	p2.add(a2);p2.add(l2);p2.add(buy2); p2.add(m3); p2.add(text7); p2.add(n3); p2.add(text8); p2.add(pg3); p2.add(text9);
+    	p2.add(attack2); p2.add(m4); p2.add(text10); p2.add(n4); p2.add(text11); p2.add(pg4); p2.add(text12);
+    	
+    	
+    	new GameJFrame( "GUIHangman", 	// title
+							pic,			// center
+							title, null,// north, south
+							p2, p1 );	// east, west
+    }
+    public void actionPerformed(ActionEvent event) {
+	        if (event.getSource()==text1 )
+	        	b1 = Integer.parseInt(text1.getText());
+	        if (event.getSource()==text2) 
+	            b2 = Integer.parseInt(text2.getText());
+	        if (event.getSource()==text3) 
+	            b3 = Integer.parseInt(text3.getText());
+	        if (event.getSource()==text4) 
+	            b4 = Integer.parseInt(text4.getText());
+	        if (event.getSource()==text5) 
+	            b5 = Integer.parseInt(text5.getText());
+	        if (event.getSource()==text6) 
+	            b6 = Integer.parseInt(text6.getText());
+	        if (event.getSource()==ok1) {
+	        	a = p1.getGold()-a1.buySoldier(b1,b2,b3);
+    			b = p2.getGold()-a2.buySoldier(b4,b5,b6);
+    			System.out.print(b1+" "+b2);
+    			p1 = new player("aysecik",a,a1);
+    			p2 = new player("veli",b,a2);
+	        }
+	           
+	        	
+	        
+	    }
+    
+    public static void main(String[] args) {
+        new GUITheConquest();
+    }
+}

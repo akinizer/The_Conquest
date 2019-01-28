@@ -1,0 +1,21 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+
+public class land extends JPanel{
+	private int[] landPowers;
+	private boolean captured;
+
+    public land() {
+    	JPanel panel = new JPanel();
+    	
+    	ImageIcon theMap = new ImageIcon("land map.jpg");
+    	JLabel map = new JLabel(theMap);
+    	setSize(300,100);
+    	panel.add(map,BorderLayout.CENTER);
+    	add(panel);
+    }
+    
+    
+}
